@@ -19,6 +19,8 @@ string[] public houseAddress;
   }
   //here uint has to be changed to address
   mapping(uint => houseMaint[]) public maintenance;
+  //Here also uint needs to be changed to address
+  mapping(uint => uint) public totalMaint;
   function addOwner(string memory oname) public {
      totalHouses++;
      housenodes[totalHouses] = houseNode(totalHouses,oname,0,"","");
@@ -26,6 +28,15 @@ string[] public houseAddress;
   function registerMaintenance(uint id,string memory hid,uint month,uint year,uint amnt) public{
     //Todo: Need to check that the house has not done its payment
     maintenance[id].push(houseMaint(hid,month,year,amnt));
+    totalMaint[id]++;
+  }
+  function sumIndividualHouseMaint() public returns (uint res){
+     uint totalSum = 0;
+     for(uint loop=0;loop<totalMaint[0];loop++){
+       totalSum = totalSum + maintenance[0][loop].amountPaid;
+     }
+
+     return totalSum;
   }
   constructor() public {
       addOwner("APJAbdulKalam");
