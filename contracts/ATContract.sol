@@ -1,4 +1,5 @@
 pragma solidity ^0.5.0;
+pragma experimental ABIEncoderV2;
 
 contract ATContract{
 //Need to change datatype of HID as address in future
@@ -40,6 +41,9 @@ function getMonthlyLedger(uint transactId) public returns (uint,uint,uint){
      uint year;
      uint amountPaid;
      uint approved;
+     uint transactId;
+     string houseOwner;
+     string accno;
   }
   //here uint has to be changed to address
   mapping(uint => houseMaint) public maintenance;//transaction id
@@ -77,9 +81,9 @@ function getMonthlyLedger(uint transactId) public returns (uint,uint,uint){
      totalHouses++;
      housenodes[hId] = houseNode(hId,oname,0,"","");
   }
-  function registerMaintenance(uint transId,uint month,uint year,uint amnt) public{
+  function registerMaintenance(uint transId,uint month,uint year,uint amnt,string memory ownerName,string memory accNo) public{
     //Todo: Need to check that the house has not done its payment
-    maintenance[transId] = houseMaint(msg.sender,month,year,amnt,0);
+    maintenance[transId] = houseMaint(msg.sender,month,year,amnt,0,transId,ownerName,accNo);
     transactIds.push(transId);
     totalMaint[msg.sender]++;
   }
@@ -89,24 +93,36 @@ function getMonthlyLedger(uint transactId) public returns (uint,uint,uint){
        totalSum = totalSum + maintenance[transactionId].amountPaid;
        return totalSum;
   }
-  function approveMaintenance(uint transId,uint month,uint year) public returns (uint res){
-          if(maintenance[transId].month==month&&maintenance[transId].year==year){
-            maintenance[transId].approved = 1;
-            summaryData[transId] = maintenance[transId];
-            maintenanceAmount = maintenanceAmount + maintenance[transId].amountPaid;
-            delete maintenance[transId];
-            return 1;
-          }
-      return 0;
+  function approveMaintenance(uint[] memory transId) public {
+  uint len = transId.length;
+  uint ind;
+  for(ind=0;ind<len;ind++){
+        if(maintenance[transId[ind]].transactId!=0){
+            maintenance[transId[ind]].approved = 1;
+            summaryData[transId[ind]] = maintenance[transId[ind]];
+            maintenanceAmount = maintenanceAmount + maintenance[transId[ind]].amountPaid;
+            delete maintenance[transId[ind]];
+          //  return 1;
+            }
   }
-  function returnApprovalData() public returns(uint[] memory res2){
-  //  uint[] memory houseId;
+
+  }
+  function returnApprovalData() public returns(address[] memory res2,string[] memory res1,string[] memory res3,uint[] memory res4
+  ,uint[] memory res5){
+  uint arrLen = transactIds.length;
+    address[] memory houseId;
+    string[] memory ownerName;
+    string[] memory accno;
+    uint[] memory transactId;
     uint[] memory amount;
-    for(uint ind=0;ind<transactIds.length;ind++){
-       //houseId[ind] = (summaryData[transactIds[ind]].hID);
+    for(uint ind=0;ind<arrLen;ind++){
+       houseId[ind] = (summaryData[transactIds[ind]].hID);
+       ownerName[ind] = (summaryData[transactIds[ind]].houseOwner);
+       accno[ind] = (summaryData[transactIds[ind]].accno);
+       transactId[ind] = (summaryData[transactIds[ind]].transactId);
        amount[ind] = (summaryData[transactIds[ind]].amountPaid);
     }
-    return (amount);
+    return (houseId,ownerName,accno,transactId,amount);
   }
   function getMaintenanceStatus(uint transId) public returns (uint res){
       if(summaryData[transId].approved==1){
