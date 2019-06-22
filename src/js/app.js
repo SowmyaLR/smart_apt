@@ -59,6 +59,9 @@ function bindEvents(){
   $('#btn-owner-block-maintenance').bind('click',function(){
     window.location.href = '/maintenance-submission.html'+'?add='+web3.eth.defaultAccount;
   });
+  $('#btn-owner-block-m-status').bind('click',function(){
+    window.location.href = '/maintenance-status-page.html'+'?add='+web3.eth.defaultAccount;
+  });
 }
 
 

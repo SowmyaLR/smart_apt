@@ -4,15 +4,19 @@ $(function() {
   });
   function bindEvents(){
     $('#btn-maintenance-submission').bind('click',function(){
-      submitMaintenance();
+      getMaintenanceStatus();
     });
   }
-  function submitMaintenance(){
+  function getMaintenanceStatus(){
     App.contracts.ATContract.deployed().then(function(instance){
+    //  var transactId = parseInt($('#transaction-id-verify-input').val());
+      //instance.getMaintenanceStatus(transactId,{from: App.account} );
       var transactId = parseInt($('#transaction-id-verify-input').val());
-      var date = $('#submission-date-input').val().split('-')
-      instance.registerMaintenance(transactId,parseInt(date[1]),parseInt(date[2]),
-      parseInt($('#maintenance-amount-input').val()), {from: App.account} );
+      if(instance.summaryData(transactId)==1){
+        console.log('Approved')
+      }else{
+        console.log('Status pending')
+      }
     }).then(function(err,res){
       console.log(err)
       console.log(res)

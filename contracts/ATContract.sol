@@ -107,10 +107,8 @@ function getMonthlyLedger(uint transactId) public returns (uint,uint,uint){
     }
     return (amount);
   }
-  function getMaintenanceStatus(uint transId,uint month,uint year) public returns (uint res){
-
-      if(summaryData[transId].month<=month&&summaryData[transId].year<=year&&
-      summaryData[transId].approved==1){
+  function getMaintenanceStatus(uint transId) public returns (uint res){
+      if(summaryData[transId].approved==1){
               return 1;//got approved
       }
 
