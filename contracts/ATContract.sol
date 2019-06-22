@@ -3,6 +3,28 @@ pragma solidity ^0.5.0;
 contract ATContract{
 //Need to change datatype of HID as address in future
 address[] public houseAddress;
+uint[] public transactIds;
+uint public currentLedger;
+uint public maintenanceAmount;
+uint public adminAmount;
+struct ATLedger{
+   uint availableAmount;
+   uint maintAmount;
+   uint adminExp;
+   bool isValue;
+}
+mapping(uint=>ATLedger) public atledger;
+function getMonthlyLedger(uint transactId) public returns (uint,uint,uint){
+   if(atledger[transactId].isValue){
+     return (atledger[transactId].availableAmount,atledger[transactId].maintAmount,atledger[transactId].adminExp);
+   }else{
+      atledger[transactId] = ATLedger(currentLedger+maintenanceAmount,maintenanceAmount,adminAmount,true);
+      currentLedger = currentLedger + maintenanceAmount;
+      maintenanceAmount = 0;
+      adminAmount = 0;
+      return (atledger[transactId].availableAmount,atledger[transactId].maintAmount,atledger[transactId].adminExp);
+   }
+}
   struct houseNode{
      address houseId;//need to change this to adddress
      string ownerName;
@@ -20,7 +42,8 @@ address[] public houseAddress;
      uint approved;
   }
   //here uint has to be changed to address
-  mapping(address => houseMaint[]) public maintenance;
+  mapping(uint => houseMaint) public maintenance;//transaction id
+  mapping(uint => houseMaint) public summaryData;
   //Here also uint needs to be changed to address
   mapping(address => uint) public totalMaint;
   uint public adminCount;
@@ -36,44 +59,61 @@ address[] public houseAddress;
   mapping(address => adminExpenses[]) public adminexp;
   function registerAdminExpense(address hId,uint cat1,uint cat2,uint cat3,uint cat4,uint month,uint year) public{
       adminexp[hId].push(adminExpenses(hId,cat1,cat2,cat3,cat4,month,year));
+      adminAmount = adminAmount + (cat1+cat2+cat3+cat4);
       adminCount++;
   }
-
+  function getCurrentATLedger(uint month,uint year,address adminId) public returns(uint,uint){
+    uint loop;
+    for(loop=0;loop<adminCount;loop++){
+       if(adminexp[adminId][loop].month<=month&&adminexp[adminId][loop].year<=year){
+       uint adminExp = adminexp[adminId][loop].category1+adminexp[adminId][loop].category2
+       +adminexp[adminId][loop].category3+adminexp[adminId][loop].category4;
+          return (currentLedger,adminExp);
+       }
+    }
+  }
   function addOwner(string memory oname,address hId) public {
      totalHouses++;
      housenodes[hId] = houseNode(hId,oname,0,"","");
   }
-  function registerMaintenance(address id,uint month,uint year,uint amnt) public{
+  function registerMaintenance(uint transId,address id,uint month,uint year,uint amnt) public{
     //Todo: Need to check that the house has not done its payment
-    maintenance[id].push(houseMaint(id,month,year,amnt,0));
+    maintenance[transId] = houseMaint(id,month,year,amnt,0);
+    transactIds.push(transId);
     totalMaint[id]++;
   }
-  function sumIndividualHouseMaint(address hId) public returns (uint res){
+  function sumIndividualHouseMaint(uint transactionId) public returns (uint res){
      uint totalSum = 0;
-     for(uint loop=0;loop<totalMaint[hId];loop++){
-       totalSum = totalSum + maintenance[hId][loop].amountPaid;
-     }
 
-     return totalSum;
+       totalSum = totalSum + maintenance[transactionId].amountPaid;
+       return totalSum;
   }
-  function approveMaintenance(address houseId,uint month,uint year) public returns (uint res){
-      uint loop = 0;
-    //  for(loop=0;loop<totalMaint[houseId];loop++){
-          if(maintenance[houseId][loop].month==month&&maintenance[houseId][loop].year==year){
-            maintenance[houseId][loop].approved = 1;
+  function approveMaintenance(uint transId,uint month,uint year) public returns (uint res){
+          if(maintenance[transId].month==month&&maintenance[transId].year==year){
+            maintenance[transId].approved = 1;
+            summaryData[transId] = maintenance[transId];
+            maintenanceAmount = maintenanceAmount + maintenance[transId].amountPaid;
+            delete maintenance[transId];
             return 1;
           }
-    //  }
       return 0;
   }
-  function getMaintenanceStatus(address hID,uint month,uint year) public returns (uint res){
-  uint loop = 0;
-  for(loop=0;loop<totalMaint[hID];loop++){
-      if(maintenance[hID][loop].month<=month&&maintenance[hID][loop].year<=year&&
-      maintenance[hID][loop].approved==1){
+  function returnApprovalData() public returns(uint[] memory res2){
+  //  uint[] memory houseId;
+    uint[] memory amount;
+    for(uint ind=0;ind<transactIds.length;ind++){
+       //houseId[ind] = (summaryData[transactIds[ind]].hID);
+       amount[ind] = (summaryData[transactIds[ind]].amountPaid);
+    }
+    return (amount);
+  }
+  function getMaintenanceStatus(uint transId,uint month,uint year) public returns (uint res){
+
+      if(summaryData[transId].month<=month&&summaryData[transId].year<=year&&
+      summaryData[transId].approved==1){
               return 1;//got approved
       }
-  }
+
   return 0;//need to approval or not yet paid
   }
   constructor() public {
