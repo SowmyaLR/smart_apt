@@ -55,10 +55,11 @@ function getMonthlyLedger(uint transactId) public returns (uint,uint,uint){
      uint category4;
      uint month;
      uint year;
+     uint transactId;
   }
   mapping(address => adminExpenses[]) public adminexp;
-  function registerAdminExpense(address hId,uint cat1,uint cat2,uint cat3,uint cat4,uint month,uint year) public{
-      adminexp[hId].push(adminExpenses(hId,cat1,cat2,cat3,cat4,month,year));
+  function registerAdminExpense(uint cat1,uint cat2,uint cat3,uint cat4,uint month,uint year,uint transactId) public{
+      adminexp[msg.sender].push(adminExpenses(msg.sender,cat1,cat2,cat3,cat4,month,year,transactId));
       adminAmount = adminAmount + (cat1+cat2+cat3+cat4);
       adminCount++;
   }
