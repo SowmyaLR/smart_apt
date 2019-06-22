@@ -76,11 +76,11 @@ function getMonthlyLedger(uint transactId) public returns (uint,uint,uint){
      totalHouses++;
      housenodes[hId] = houseNode(hId,oname,0,"","");
   }
-  function registerMaintenance(uint transId,address id,uint month,uint year,uint amnt) public{
+  function registerMaintenance(uint transId,uint month,uint year,uint amnt) public{
     //Todo: Need to check that the house has not done its payment
-    maintenance[transId] = houseMaint(id,month,year,amnt,0);
+    maintenance[transId] = houseMaint(msg.sender,month,year,amnt,0);
     transactIds.push(transId);
-    totalMaint[id]++;
+    totalMaint[msg.sender]++;
   }
   function sumIndividualHouseMaint(uint transactionId) public returns (uint res){
      uint totalSum = 0;
