@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Admin</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-light bg-primary">
+                <h1 class="text-center">Maintenance Submission Page</h1>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container" style="border:1px solid #337ab7; border-radius: 5px;">
+                    <div class="row" style="margin: 20px 20px;">
+                        <div class="col">
+                            <label id="submission-label">Transaction Date </label>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" id="submission-date-input" data-provide="datepicker"
+                                type="date">
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 0px 20px;">
+                        <div class="col">
+                            <label id="transaction-holder-name">Account Holder Name:</label>
+                        </div>
+                        <div class="col">
+                            <input id="transaction-account-holder-input" class="form-control" type="input"
+                                maxlength="30">
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 20px 20px;">
+                        <div class="col">
+                            <label id="transaction-account-number">Account Number:</label>
+                        </div>
+                        <div class="col">
+                            <input id="transaction-account-number-input" class="form-control" type="input"
+                                maxlength="30">
+                        </div>
+                    </div>
+                    <div class="row"
+                        style="margin-bottom: 20px;margin-left:20px;margin-right:20px;margin-bottom: 20px;">
+                        <div class="col">
+                            <label id="transaction-id-verify">Transaction ID:</label>
+                        </div>
+                        <div class="col">
+                            <input id="transaction-id-verify-input" class="form-control" type="input" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="row"
+                        style="margin-bottom: 20px;margin-left:20px;margin-right:20px;margin-bottom: 20px;">
+                        <div class="col">
+                            <label id="transaction-comments">Transaction Comments:</label>
+                        </div>
+                        <div class="col">
+                            <textarea id="transaction-comments-input" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row"
+                        style="margin-bottom: 20px;margin-left:20px;margin-right:20px;margin-bottom: 20px;">
+                        <div class="col">
+                            <button id="btn-maintenance-submission" type="button" class="btn btn-primary"
+                                style="width:200px">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        <script src="js/app.js"></script>
+</body>
+
+</html>

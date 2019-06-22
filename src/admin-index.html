@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Admin</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/align.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-light bg-primary">
+                <h1 class="text-center">Admin Block</h1>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <div id="admin-block-maintenance">
+                    <button id="btn-admin-maintenance" type="button" class="btn btn-primary"
+                        style="width:300px">Maintenance Submission</button>
+                </div>
+                <div class="margin-height"> </div>
+                <div id="admin-block-m-status">
+                    <button id="btn-admin-maintenance-submission" type="button" class="btn btn-primary"
+                        style="width:300px">Check Maintenance Submit Status</button>
+                </div>
+                <div class="margin-height" \></div>
+                <div id="admin-block-view-budget">
+                    <button id="btn-admin-view-budget" type="button" class="btn btn-primary" style="width:300px">Monthly
+                        Maintenance Budget</button>
+                </div>
+                <div class="margin-height" \></div>
+                <!-- <div id="admin-block-monthly" class="row">
+                    <button id="btn-admin-monthly-rent" type="button" class="btn btn-primary"
+                        style="width:300px">Monthly Rent</button>
+                </div>
+                <div class="margin-height" \></div>
+                <div id="admin-block-invoice" class="row">
+                    <button id="btn-admin-invoice-creation" type="button" class="btn btn-primary"
+                        style="width:300px">Rent Invoice</button>
+                </div>
+                <div class="margin-height" \></div>
+                -->
+                <div id="admin-approve-maintenance">
+                    <button id="btn-admin-approve-maintenance" type="button" class="btn btn-primary"
+                        style="width:300px">Approve Maintenance</button>
+                </div>
+                <div class="margin-height" \></div>
+                <div id="admin-register-expense">
+                    <button id="btn-admin-register-expense" type="button" class="btn btn-primary"
+                        style="width:300px">Register Expense</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
