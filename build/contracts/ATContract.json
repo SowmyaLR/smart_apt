@@ -13958,8 +13958,8 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x80E45141783b172735753922DA7701e4C61f5c6E",
-      "transactionHash": "0xbd48d522b0c762afa2a6f9ef76b6f33fab2486b6ddddd9e33ff0c21b27f7298e"
+      "address": "0xb1cdbcE895B8c28A2925bA9d423c37439aEEA6be",
+      "transactionHash": "0xfacb628c0fd9dfec42138e20b7c8a76875d3ce3b07b5a8f7b2cd4161c7ae4a44"
     },
     "1560875884359": {
       "events": {},
@@ -13969,7 +13969,7 @@
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-06-22T17:32:59.334Z",
+  "updatedAt": "2019-06-22T17:51:30.189Z",
   "devdoc": {
     "methods": {}
   },

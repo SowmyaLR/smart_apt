@@ -10,6 +10,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/align.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,9 +30,9 @@
         <div class="row">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container" style="border:1px solid #337ab7; border-radius: 5px;">
-                    <div class="row" style="margin: 20px 20px;">
+                    <div class="row form-group" style="margin: 20px 20px;">
                         <div class="col">
-                            <label id="submission-label">Transaction Date </label>
+                            <label id="submission-label" class="required">Transaction Date</label>
                         </div>
                         <div class="col">
                             <input class="form-control" id="submission-date-input" data-provide="datepicker"
@@ -40,7 +41,7 @@
                     </div>
                     <div class="row" style="margin: 20px 20px;">
                         <div class="col">
-                            <label id="transaction-category">Category:</label>
+                            <label id="transaction-category" class="required">Category:</label>
                         </div>
                         <div class="col">
                             <select id="transaction-category-holder-input" class="form-control">
@@ -53,15 +54,15 @@
                     </div>
                     <div class="row" style="margin: 20px 20px;">
                             <div class="col">
-                                <label id="maintenance-amount-id" class="required">Amount:</label>
+                                <label id="expense-amount-id" class="required">Amount:</label>
                             </div>
                             <div class="col">
-                                <input id="maintenance-amount-input" class="form-control" type="number" maxlength="10">
+                                <input id="expense-amount-input" class="form-control" type="number" maxlength="10">
                             </div>
                         </div>
                     <div class="row" style="margin: 20px 20px;">
                         <div class="col">
-                            <label id="transaction-id-verify">Transaction ID:</label>
+                            <label id="transaction-id-verify" class="required">Transaction ID:</label>
                         </div>
                         <div class="col">
                             <input id="transaction-id-verify-input" class="form-control" type="input" maxlength="30">
@@ -69,7 +70,7 @@
                     </div>
                     <div class="row" style="margin: 20px 20px;">
                         <div class="col">
-                            <label id="transaction-comments">Transaction Comments:</label>
+                            <label id="transaction-comments" class="required">Transaction Comments:</label>
                         </div>
                         <div class="col">
                             <textarea id="transaction-comments-input" class="form-control"></textarea>
@@ -83,7 +84,7 @@
                         </div>
                         <div class="row" style="margin: 20px 20px;">
                             <div class="col">
-                                <label id="transaction-holder-name">Account Holder Name:</label>
+                                <label id="transaction-holder-name" class="required">Account Holder Name:</label>
                             </div>
                             <div class="col">
                                 <input id="transaction-account-holder-input" class="form-control" type="input"
@@ -92,7 +93,7 @@
                         </div>
                         <div class="row" style="margin: 20px 20px;">
                             <div class="col">
-                                <label id="transaction-account-number">Account Number:</label>
+                                <label id="transaction-account-number" class="required">Account Number:</label>
                             </div>
                             <div class="col">
                                 <input id="transaction-account-number-input" class="form-control" type="input"

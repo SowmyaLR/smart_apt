@@ -10,6 +10,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/align.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,7 +32,7 @@
                 <div class="container" style="border:1px solid #337ab7; border-radius: 5px;">
                     <div class="row" style="margin: 20px 20px;">
                         <div class="col">
-                            <label id="submission-label">Transaction Date </label>
+                            <label id="submission-label" class="required">Transaction Date:</label>
                         </div>
                         <div class="col">
                             <input class="form-control" id="submission-date-input" data-provide="datepicker"
@@ -40,7 +41,7 @@
                     </div>
                     <div class="row" style="margin: 0px 20px;">
                         <div class="col">
-                            <label id="transaction-holder-name">Account Holder Name:</label>
+                            <label id="transaction-holder-name" class="required">Account Holder Name:</label>
                         </div>
                         <div class="col">
                             <input id="transaction-account-holder-input" class="form-control" type="input"
@@ -49,17 +50,25 @@
                     </div>
                     <div class="row" style="margin: 20px 20px;">
                         <div class="col">
-                            <label id="transaction-account-number">Account Number:</label>
+                            <label id="transaction-account-number" class="required">Account Number:</label>
                         </div>
                         <div class="col">
                             <input id="transaction-account-number-input" class="form-control" type="input"
                                 maxlength="30">
                         </div>
                     </div>
+                    <div class="row" style="margin: 20px 20px;">
+                            <div class="col">
+                                <label id="transaction-amount-id" class="required">Amount:</label>
+                            </div>
+                            <div class="col">
+                                <input id="transaction-amount-input" class="form-control" type="number" maxlength="10">
+                            </div>
+                        </div>
                     <div class="row"
                         style="margin-bottom: 20px;margin-left:20px;margin-right:20px;margin-bottom: 20px;">
                         <div class="col">
-                            <label id="transaction-id-verify">Transaction ID:</label>
+                            <label id="transaction-id-verify" class="required">Transaction ID:</label>
                         </div>
                         <div class="col">
                             <input id="transaction-id-verify-input" class="form-control" type="input" maxlength="30">

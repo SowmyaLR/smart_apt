@@ -12,16 +12,16 @@ $(function() {
       var transactId = parseInt($('#transaction-id-verify-input').val());
       var date = $('#submission-date-input').val().split('-')
       if($('#transaction-category-holder-input').val()=='0'){
-        instance.registerAdminExpense($('#maintenance-amount-input').val(),0,0,0,date[1],date[0],transactId,
+        instance.registerAdminExpense($('#expense-amount-input').val(),0,0,0,date[1],date[0],transactId,
         {from: App.account} );
       }else if($('#transaction-category-holder-input').val()=='1'){
-        instance.registerAdminExpense(0,$('#maintenance-amount-input').val(),0,0,date[1],date[0],transactId,
+        instance.registerAdminExpense(0,$('#expense-amount-input').val(),0,0,date[1],date[0],transactId,
         {from: App.account} );
       }else if($('#transaction-category-holder-input').val()=='2'){
-        instance.registerAdminExpense(0,0,$('#maintenance-amount-input').val(),0,date[1],date[0],transactId,
+        instance.registerAdminExpense(0,0,$('#expense-amount-input').val(),0,date[1],date[0],transactId,
         {from: App.account} );
       }else{
-        instance.registerAdminExpense(0,0,0,$('#maintenance-amount-input').val(),date[1],date[0],transactId,
+        instance.registerAdminExpense(0,0,0,$('#expense-amount-input').val(),date[1],date[0],transactId,
         {from: App.account} );
       }
 

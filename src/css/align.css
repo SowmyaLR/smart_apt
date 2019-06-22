@@ -1,3 +1,28 @@
 .margin-height{
     height:20px;
 }
+
+.required:after{
+    color: red;
+   content: "*";
+   position: absolute;
+}
+
+.adding-border{
+    border:1px solid #337ab7;
+    height:40px;
+    padding:10px;
+}
+
+.header-division{
+    margin: 0px 20px;
+    background-color:grey;
+}
+
+.content-division{
+    margin: 0px 20px;
+}
+
+.display-none{
+    display:none;
+}
