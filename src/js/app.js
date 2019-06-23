@@ -67,6 +67,10 @@ function bindEvents(){
     window.location.href = '/maintenance-submission.html';
   });
 
+  $('#btn-owner-block-view-budget').bind('click',function(){
+    window.location.href = '/maintenance-report-generate.html';
+  });
+
   $('#btn-admin-maintenance-submission').bind('click',function(){
     window.location.href = '/maintenance-status-page.html';
   });
