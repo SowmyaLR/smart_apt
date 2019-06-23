@@ -57,10 +57,26 @@ App = {
 };
 function bindEvents(){
   $('#btn-owner-block-maintenance').bind('click',function(){
-    window.location.href = '/maintenance-submission.html'+'?add='+web3.eth.defaultAccount;
+    window.location.href = '/maintenance-submission.html';
   });
   $('#btn-owner-block-m-status').bind('click',function(){
-    window.location.href = '/maintenance-status-page.html'+'?add='+web3.eth.defaultAccount;
+    window.location.href = '/maintenance-status-page.html';
+  });
+
+  $('#btn-admin-maintenance').bind('click',function(){
+    window.location.href = '/maintenance-submission.html';
+  });
+
+  $('#btn-admin-maintenance-submission').bind('click',function(){
+    window.location.href = '/maintenance-status-page.html';
+  });
+
+  $('#btn-admin-approve-maintenance').bind('click',function(){
+    window.location.href = '/maintenance-approval-page.html';
+  });
+
+  $('#btn-admin-register-expense').bind('click',function(){
+    window.location.href = '/expense-register.html';
   });
 }
 
