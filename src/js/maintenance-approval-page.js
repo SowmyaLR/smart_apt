@@ -92,7 +92,7 @@ function MaintenanceApprovalPage() {
               //  App.contracts.ATContract.at(App.contracts.ATContract.address);
             //}else{
                 App.contracts.ATContract.deployed().then(function(instance){
-                    instance.getApprovalData();
+                    instance.returnApprovalData();
                 });
             //}
         }
