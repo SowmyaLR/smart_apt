@@ -49,8 +49,8 @@ function MaintenanceApprovalPage() {
     }
 
     MaintenanceApprovalPage.prototype.init = function () {
-
-        //self.addingTrasactionContent(undefined, 1);
+        this.initializeEvents();
+        self.addingTrasactionContent(undefined, 1);
         //cloningContentDiv.find("input[type='checkbox']")
 
     };
