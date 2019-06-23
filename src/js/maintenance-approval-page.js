@@ -84,80 +84,76 @@ function MaintenanceApprovalPage() {
             }
         });
 
-        $('#btn-load-all').bind('click',function(event){
+        $('#btn-load-all').bind('click', function (event) {
             getApprovalData();
         });
-        async function getApprovalData(){
-            //if(App.contracts.ATContract.isDeployed()){
-              //  App.contracts.ATContract.at(App.contracts.ATContract.address);
-            //}else{
-                App.contracts.ATContract.deployed().then(function(instance){
-                    instance.returnApprovalData();
-                });
-            //}
+        function getApprovalData() {
+            App.contracts.ATContract.deployed().then(function (instance) {
+                instance.returnApprovalData();
+            });
         }
 
-        $('#btn-decline-all').bind('click',function(event){
+        $('#btn-decline-all').bind('click', function (event) {
             var declineAll = $("input[content='approve']");
-            $.each(declineAll, function(index){
+            $.each(declineAll, function (index) {
                 declineAll[index].checked = false;
             });
-            
+
             var approveAll = $("input[content='decline']");
-            $.each(approveAll, function(index){
+            $.each(approveAll, function (index) {
                 approveAll[index].checked = true;
             });
 
         });
 
-        $('#btn-approve-all').bind('click',function(event){
+        $('#btn-approve-all').bind('click', function (event) {
             var declineAll = $("input[content='decline']");
-            $.each(declineAll, function(index){
+            $.each(declineAll, function (index) {
                 declineAll[index].checked = false;
             });
-            
+
             var approveAll = $("input[content='approve']");
-            $.each(approveAll, function(index){
+            $.each(approveAll, function (index) {
                 approveAll[index].checked = true;
             });
 
         });
     };
 
-        $('#btn-submit-all').bind('click',function(event){
-            var deferred = $.Deferred();
-            var transactionIdList = [];
-            $.Deferred().resolve().then(function(){
-                return self.getSubmittedData();
-                //call your save method
-                //return deferred.resolve();
-            }).then(function(result){
-                transactionIdList = result;
-                console.log(transactionIdList);
-                return deferred.resolve();
-            }).fail(function(){
-                return deferred.reject();
-            });
-            return deferred.promise();
+    $('#btn-submit-all').bind('click', function (event) {
+        var deferred = $.Deferred();
+        var transactionIdList = [];
+        $.Deferred().resolve().then(function () {
+            return self.getSubmittedData();
+            //call your save method
+            //return deferred.resolve();
+        }).then(function (result) {
+            transactionIdList = result;
+            console.log(transactionIdList);
+            return deferred.resolve();
+        }).fail(function () {
+            return deferred.reject();
         });
-    
+        return deferred.promise();
+    });
 
-        MaintenanceApprovalPage.prototype.getSubmittedData = function(){
-            var transactionList = [];
-            var approvedFrame = $("input[content='approve']");
-            var deferred = $.Deferred();
-            $.Deferred().resolve().then(function(){
-                $.each(approvedFrame, function(index){
-                    if(approvedFrame[index].checked){
-                        transactionList.push($(".input[content='transaction-id']")[index].innerHTML);
-                    }
-                });
-            }).then(function(){
-                return deferred.resolve(transactionList);
-            }).fail(function(){
-                return deferred.reject();
+
+    MaintenanceApprovalPage.prototype.getSubmittedData = function () {
+        var transactionList = [];
+        var approvedFrame = $("input[content='approve']");
+        var deferred = $.Deferred();
+        $.Deferred().resolve().then(function () {
+            $.each(approvedFrame, function (index) {
+                if (approvedFrame[index].checked) {
+                    transactionList.push($(".input[content='transaction-id']")[index].innerHTML);
+                }
             });
-            return deferred.promise();
+        }).then(function () {
+            return deferred.resolve(transactionList);
+        }).fail(function () {
+            return deferred.reject();
+        });
+        return deferred.promise();
     }
 }
 
