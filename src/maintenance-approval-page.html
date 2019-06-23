@@ -21,29 +21,40 @@
 </head>
 
 <body>
-    <div class="container-fluid" id="main-container" style="min-width: 1200px;">
+    <div class="container-fluid" id="main-container" style="min-width: 1500px;">
         <div class="row">
             <nav class="navbar navbar-light bg-primary">
                 <h1 class="text-center">Maintenance Approval Page</h1>
             </nav>
         </div>
+        <div class="row text-right" style="margin:10px 20px;">
+            <button id="btn-approve-all" style="margin-left: 10px;" type="button" class="btn btn-primary" style="width:200px">Approve All</button>
+            <button id="btn-decline-all" style="margin-left: 10px;" type="button" class="btn btn-primary" style="width:200px">Decline All</button>
+            <button id="btn-submit-all" style="margin-left: 10px;" type="button" class="btn btn-primary" style="width:200px">Submit</button>
+            <button id="btn-load-all" style="margin-left: 10px;" type="button" class="btn btn-primary" style="width:200px">Load</button>
+        </div>
         <div class="row header-division">
-            <div class="col-xs-1 adding-border">
+            <div class="col-xs-2 adding-border">
                 <span>House No:</span>
             </div>
-            <div class="col-xs-3 adding-border">
+            <div class="col-xs-2 adding-border">
                 <div>
                     <span>Name:</span>
                 </div>
             </div>
-            <div class="col-xs-3 adding-border">
+            <div class="col-xs-2 adding-border">
                 <div>
                     <span>Account Number:</span>
                 </div>
             </div>
-            <div class="col-xs-3 adding-border">
+            <div class="col-xs-2 adding-border">
                 <div>
                     <span>Transaction ID:</span>
+                </div>
+            </div>
+            <div class="col-xs-2 adding-border">
+                <div>
+                    <span>Total Amount:</span>
                 </div>
             </div>
             <div class="col-xs-1 adding-border">
@@ -58,32 +69,37 @@
             </div>
         </div>
         <div class="row content-division display-none" id="content">
-            <div class="col-xs-1 adding-border">
+            <div class="col-xs-2 adding-border">
                 <span content="house-id" class="input">570</span>
             </div>
-            <div class="col-xs-3 adding-border">
+            <div class="col-xs-2 adding-border">
                 <div>
                     <span class="input" content="name">Ravi Kumar Karthikeyan</span>
                 </div>
             </div>
-            <div class="col-xs-3 adding-border">
+            <div class="col-xs-2 adding-border">
                 <div>
                     <span class="input" content="account-number">123456789</span>
                 </div>
             </div>
-            <div class="col-xs-3 adding-border">
+            <div class="col-xs-2 adding-border">
                 <div>
                     <span class="input" content="transaction-id">9876543210</span>
                 </div>
             </div>
-            <div class="col-xs-1 adding-border">
-                <div class="text-center">
-                    <input class="input checkbox-event" indexValue = "0" content="approve" type="checkbox">
+            <div class="col-xs-2 adding-border">
+                <div>
+                    <span class="input" content="amount-send">98765</span>
                 </div>
             </div>
             <div class="col-xs-1 adding-border">
                 <div class="text-center">
-                    <input class="input checkbox-event" indexValue = "0" content="decline" type="checkbox">
+                    <input class="input checkbox-event" indexValue="0" content="approve" type="checkbox">
+                </div>
+            </div>
+            <div class="col-xs-1 adding-border">
+                <div class="text-center">
+                    <input class="input checkbox-event" indexValue="0" content="decline" type="checkbox">
                 </div>
             </div>
         </div>
